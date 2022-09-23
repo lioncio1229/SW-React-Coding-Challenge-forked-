@@ -33,6 +33,7 @@ export const NewPrice = ({ oldPrice, newPrice }) => (
         textDecoration: "line-through",
         color: "#bbbcbd",
         fontStyle: "italic",
+        fontSize: 14
       }}
     >
       {oldPrice}
