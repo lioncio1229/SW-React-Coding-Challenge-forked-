@@ -42,7 +42,7 @@ const SizeButtons = ({sizes}) => {
 
 const SizeSelector = ({logo, brand, product, oldPrice, newPrice}) => {
     return (
-        <Stack spacing={1.5} bgcolor='white' p={2} borderRadius={2} width={400}>
+        <Stack spacing={1.5} bgcolor='white' p={2} borderRadius={2}>
             <Stack fontSize={14} fontWeight="bold"> {brand} </Stack>
             <Stack variant='h4' fontWeight='bold'> {product} </Stack>
             <NewPrice oldPrice={oldPrice} newPrice={newPrice} />
