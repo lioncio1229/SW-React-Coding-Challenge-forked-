@@ -1,5 +1,5 @@
-import { Stack, Box, Typography } from "@mui/material";
-import { FavoriteBorderOutlined } from "@mui/icons-material";
+import { Stack, Box, Typography, IconButton } from "@mui/material";
+import { Favorite, FavoriteBorderOutlined } from "@mui/icons-material";
 
 const iconPosition = {
   position: "absolute",
@@ -7,7 +7,14 @@ const iconPosition = {
   right: 10
 };
 
-const ProductCard = ({ name, price, size = 170 }) => (
+const ProductCard = ({
+  name,
+  description,
+  price,
+  size = 170,
+  isFavorite,
+  setIsFavorite,
+}) => (
   <Stack spacing={1}>
     <Box
       width={size}
@@ -16,16 +23,22 @@ const ProductCard = ({ name, price, size = 170 }) => (
       borderRadius={2}
       position="relative"
     >
-      <Box bgcolor="white" p={0.8} borderRadius={2} sx={iconPosition}>
-        <FavoriteBorderOutlined />
+      <Box bgcolor="white" borderRadius={2} sx={iconPosition}>
+        <IconButton onClick={setIsFavorite}>
+          {isFavorite ? <Favorite /> : <FavoriteBorderOutlined />}
+        </IconButton>
       </Box>
     </Box>
-    <Typography>{name}</Typography>
+    <Stack direction='row'>
+      <Typography noWrap={false} color='#767779'>
+        <b style={{color : 'black'}}>{name}</b> {description}
+      </Typography>
+    </Stack>
     <Typography fontWeight="bold">{price}</Typography>
   </Stack>
 );
 
-const RecommendedCard = ({ bgcolor = "white"}) => {
+const RecommendedCard = ({ recommendedProducts, bgcolor = "white"}) => {
   return (
     <Stack spacing={1} bgcolor={bgcolor} p={2} borderRadius={2}>
 
@@ -39,8 +52,8 @@ const RecommendedCard = ({ bgcolor = "white"}) => {
       </Stack>
 
       <Stack direction="row" spacing={1} justifyContent="space-between">
-        <ProductCard name="Apple" price="$200" />
-        <ProductCard name="Mansanas" price="$300" />
+        <ProductCard name="Apple" description='The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality' price="$200" />
+        <ProductCard name="Mansanas" description='The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality' price="$300" />
       </Stack>
     </Stack>
   );
