@@ -1,6 +1,6 @@
 import { Box, Stack, Typography, Button } from "@mui/material";
 
-const AddRemoveButton = () => {
+export const AddRemoveButton = () => {
     return (
         <Stack direction='rows' sx={{border : '1px solid #dfdfdf'}} alignItems='center' justifyContent='space-between' borderRadius={2}>
             <Button variant="text"><Typography color='black' variant='h5'>-</Typography></Button>
@@ -10,7 +10,22 @@ const AddRemoveButton = () => {
     )
 }
 
-const QuantityCard = ({price='$100', passPrice='$120', width=400, imageSize=135}) => {
+export const NewPrice = ({ oldPrice, newPrice }) => (
+  <Stack direction="rows" gap={3}>
+    <Typography fontWeight="bold">{newPrice}</Typography>
+    <Typography
+      sx={{
+        textDecoration: "line-through",
+        color: "#bbbcbd",
+        fontStyle: "italic",
+      }}
+    >
+      {oldPrice}
+    </Typography>
+  </Stack>
+);
+
+const QuantityCard = ({oldPrice='$100', newPrice='$120', width=400, imageSize=135}) => {
     return (
         <Stack gap={2} direction='rows' width={width} bgcolor='white' p={2} borderRadius={2}>
             <Box width={imageSize} height={imageSize} bgcolor='#dfdfdf' borderRadius={2}></Box>
@@ -18,10 +33,7 @@ const QuantityCard = ({price='$100', passPrice='$120', width=400, imageSize=135}
                 <Typography fontSize={14}> <b>Mansanas</b> This is Mansanas </Typography>
                 <Typography color='#5f6063' fontSize={14}>Philippines Mansanas</Typography>
                 <AddRemoveButton/>
-                <Stack direction='rows' gap={3}>
-                    <Typography fontWeight='bold'>{price}</Typography>
-                    <Typography sx={{textDecoration : 'line-through', color : '#bbbcbd', fontStyle : 'italic'}}>{passPrice}</Typography>
-                </Stack>
+                <NewPrice oldPrice={oldPrice} newPrice={newPrice} />
             </Stack>
         </Stack>
     );
