@@ -28,6 +28,7 @@ const ProductCard = ({ name, price, size = 170 }) => (
 const RecommendedCard = ({ bgcolor = "white", width = 400 }) => {
   return (
     <Stack spacing={1} width={width} bgcolor={bgcolor} p={2} borderRadius={2}>
+        
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Typography fontSize={20} fontWeight="bold">
           Recommended for you
