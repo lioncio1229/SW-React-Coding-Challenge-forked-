@@ -42,15 +42,15 @@ export const NewPrice = ({ originalPrice, salePrice }) => (
 );
 
 const QuantityCard = ({
-  name='',
-  description='',
+  name,
+  description,
   quantity,
   maxQuantity,
   onDecrement,
   onIncrement,
-  originalPrice = "$100",
-  salePrice = "$120",
-  imageSize = 135,
+  originalPrice,
+  salePrice,
+  imageSize=135,
   imageUrl='#',
   width=400
 }) => (

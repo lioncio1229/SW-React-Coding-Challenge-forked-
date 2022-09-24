@@ -22,8 +22,8 @@ const SizeButtons = ({sizes, selected, setSelected}) => {
 
 const SizeSelector = ({
   logo,
-  brand = "",
-  product = "",
+  brand,
+  product,
   originalPrice,
   salePrice,
   sizes,

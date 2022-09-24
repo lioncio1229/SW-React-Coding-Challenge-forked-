@@ -28,7 +28,7 @@ export default function App() {
   }
   
   const setNewDisplay = () => {
-    setIndex(index < products?.d.length ? index + 1 : 0)
+    setIndex(index < products?.d.length-1 ? index + 1 : 0)
   }
 
   useEffect(() => {
@@ -39,7 +39,6 @@ export default function App() {
   }, [index, products])
   
   if(!products) return <div>Loading</div>
-
   const {name, description, imageUrl, salePrice, originalPrice, sizes} =  products.d[index]
 
   return (

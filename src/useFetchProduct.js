@@ -19,7 +19,6 @@ const useFetchProduct = (url, authorizationHeaderToken) => {
       .then(resJson => {
         setProducts(resJson);
         setFetching(false);
-        console.log('Fetching...');
       });
 
   }, [fetching === true, url, authorizationHeaderToken])

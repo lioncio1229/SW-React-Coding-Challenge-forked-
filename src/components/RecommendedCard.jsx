@@ -27,6 +27,7 @@ const ProductCard = ({
       display='flex'
       justifyContent='center'
       alignItems='center'
+      sx={{cursor : 'pointer'}}
     >
       <img src={imageUrl} width='75%' height='auto' />
       <Box bgcolor="white" borderRadius={2} sx={iconPosition}>
