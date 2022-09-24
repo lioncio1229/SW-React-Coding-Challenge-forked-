@@ -1,4 +1,5 @@
 import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+import { grey } from "@mui/material/colors";
 
 const theme = createTheme({
   palette: {
@@ -9,6 +10,9 @@ const theme = createTheme({
     },
     background: {
       default: "#d7d8df"
+    },
+    action : {
+      disabled : grey['300']
     }
   }
 });

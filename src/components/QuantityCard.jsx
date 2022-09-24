@@ -1,4 +1,4 @@
-import { Stack, Typography, Button } from "@mui/material";
+import { Stack, Typography, Button, Box } from "@mui/material";
 
 export const AddRemoveButton = ({ quantity = 0, maxQuantity=100, onDecrement, onIncrement }) => (
   <Stack
@@ -41,20 +41,38 @@ export const NewPrice = ({ oldPrice, newPrice }) => (
   </Stack>
 );
 
-const QuantityCard = ({quantity, maxQuantity, onDecrement, onIncrement, oldPrice='$100', newPrice='$120', imageSize=135, imageUrl}) => (
+const QuantityCard = ({
+  name = "Mansanas",
+  description = "So this is mansanas from baguio. this is super fresh. mansanas from san pablo",
+  quantity,
+  maxQuantity,
+  onDecrement,
+  onIncrement,
+  oldPrice = "$100",
+  newPrice = "$120",
+  imageSize = 135,
+  imageUrl,
+}) => (
+  <Stack gap={2} direction="rows" bgcolor="white" p={2} borderRadius={2}>
 
-    <Stack gap={2} direction='rows' bgcolor='white' p={2} borderRadius={2}>
-        
-        <img src={imageUrl} width={imageSize} height='auto' style={{borderRadius : '5px'}} />
-        
-        <Stack spacing={1}>
-            <Typography fontSize={14}> <b>Mansanas</b> This is Mansanas </Typography>
-            <Typography color='#5f6063' fontSize={14}>Philippines Mansanas</Typography>
-            <AddRemoveButton quantity={quantity} maxQuantity={maxQuantity} onDecrement={onDecrement} onIncrement={onIncrement}/>
-            <NewPrice oldPrice={oldPrice} newPrice={newPrice} />
-        </Stack>
+    <img src={imageUrl} width={imageSize} height={imageSize} style={{borderRadius : '5px'}} />
 
+    <Stack spacing={1}>
+      <Stack direction="row">
+        <Typography noWrap={false} color="#767779">
+          <b style={{ color: "black" }}>{name}</b> {description}
+        </Typography>
+      </Stack>
+
+      <AddRemoveButton
+        quantity={quantity}
+        maxQuantity={maxQuantity}
+        onDecrement={onDecrement}
+        onIncrement={onIncrement}
+      />
+      <NewPrice oldPrice={oldPrice} newPrice={newPrice} />
     </Stack>
-)
+  </Stack>
+);
 
 export default QuantityCard;

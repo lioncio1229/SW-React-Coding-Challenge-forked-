@@ -7,10 +7,10 @@ const SizeButtons = ({sizes, selected, setSelected}) => {
         {sizes.map((size, i) => (
           <Button
             key={i}
-            variant={selected === size.label ? 'contained' : 'outlined'}
+            variant='outlined'
             bgcolor="white"
             disabled={!size.isAvailable}
-            sx={{ borderColor: "black", color: "black" }}
+            sx={{ borderColor: size.label === selected ? "black" : 'grey.200', color: "black" }}
             onClick={() => setSelected(size.label)}
           >
             {size.label}
