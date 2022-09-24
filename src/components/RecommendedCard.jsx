@@ -47,14 +47,14 @@ const ProductCard = ({
   </Stack>
 );
 
-const RecommendedCard = ({ recommendedProducts, bgcolor = "white"}) => {
+const RecommendedCard = ({ recommendedProducts, bgcolor = "white", width=400}) => {
   return (
-    <Stack spacing={1} bgcolor={bgcolor} p={2} borderRadius={2}>
+    <Stack spacing={1} bgcolor={bgcolor} p={2} borderRadius={2} width={width}>
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Typography fontSize={20} fontWeight="bold">
           Recommended for you
         </Typography>
-        <Typography color="primary" fontSize={12}>
+        <Typography color="primary" fontSize={12} sx={{cursor : 'pointer', userSelect : 'none'}}>
           See more
         </Typography>
       </Stack>

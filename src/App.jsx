@@ -69,7 +69,9 @@ export default function App() {
         setSelected={setSize}
         sizes={sizes}
       />
+      
       <Recommended recommendedProducts={recommendedProducts}/>
+
     </Stack>
   );
 }

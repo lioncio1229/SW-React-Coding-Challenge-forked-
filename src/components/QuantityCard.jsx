@@ -52,8 +52,9 @@ const QuantityCard = ({
   salePrice = "$120",
   imageSize = 135,
   imageUrl='#',
+  width=400
 }) => (
-  <Stack gap={2} direction="rows" bgcolor="white" p={2} borderRadius={2}>
+  <Stack gap={2} direction="rows" bgcolor="white" p={2} borderRadius={2} width={width}>
 
     <img src={imageUrl} width={imageSize} height={imageSize} style={{borderRadius : '5px'}} />
 
