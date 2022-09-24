@@ -46,7 +46,7 @@ const ProductCard = ({
   </Stack>
 );
 
-const RecommendedCard = ({ bgcolor = "white"}) => {
+const RecommendedCard = ({ recommendedProducts, bgcolor = "white"}) => {
   return (
     <Stack spacing={1} bgcolor={bgcolor} p={2} borderRadius={2}>
       <Stack direction="row" justifyContent="space-between" alignItems="center">
@@ -59,18 +59,16 @@ const RecommendedCard = ({ bgcolor = "white"}) => {
       </Stack>
 
       <Stack direction="row" spacing={1} justifyContent="space-between">
-        <ProductCard
-          name="Apple"
-          description="The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality"
-          price="$200"
-          imageUrl='./sample.jpg'
-        />
-        <ProductCard
-          name="Mansanas"
-          description="The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality"
-          price="$300"
-          imageUrl='./sample.jpg'
-        />
+        {
+          recommendedProducts.map(v => (
+            <ProductCard
+              name={v.name}
+              description={v.description}
+              price={v.salePrice}
+              imageUrl={v.imageUrl}
+            />
+          ))
+        }
       </Stack>
     </Stack>
   );

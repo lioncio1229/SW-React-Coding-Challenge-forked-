@@ -5,29 +5,8 @@ import { Stack } from "@mui/material";
 import {LoadingButton} from '@mui/lab';
 import { useState } from "react";
 import useFetchProduct from "./useFetchProduct";
+import getRandomizeIndixes from './getRandomizeIndixes';
 
-const example = [
-  {
-    isAvailable: false,
-    label: "XS",
-  },
-  {
-    isAvailable: true,
-    label: "S",
-  },
-  {
-    isAvailable: true,
-    label: "M",
-  },
-  {
-    isAvailable: false,
-    label: "L",
-  },
-  {
-    isAvailable: true,
-    label: "XL",
-  },
-];
 
 export default function App() {
   const [quantity, setQuantity] = useState(0)
@@ -53,8 +32,11 @@ export default function App() {
 
   if(!products) return <div>Loading</div>
 
-  const {name, description, imageUrl, salePrice, originalPrice, sizes} = products.d[index]
+  const productList = products.d;
+  const {name, description, imageUrl, salePrice, originalPrice, sizes} = productList[index]
 
+  const recommendedProducts = getRandomizeIndixes(productList.length, 2).map(i => productList[i])
+  
   return (
     <Stack spacing={1} width={400}>
 
@@ -82,7 +64,7 @@ export default function App() {
         setSelected={setSize}
         sizes={sizes}
       />
-      <Recommended />
+      <Recommended recommendedProducts={recommendedProducts}/>
     </Stack>
   );
 }
