@@ -2,7 +2,9 @@ import Recommended from "./components/RecommendedCard";
 import QuantityCard from "./components/QuantityCard";
 import SizeSelector from "./components/SizeSelector";
 import { Stack } from "@mui/material";
+import {LoadingButton} from '@mui/lab';
 import { useState } from "react";
+import useFetchProduct from "./hooks/useFetchProduct";
 
 const example = [
   {
@@ -31,6 +33,11 @@ export default function App() {
   const [quantity, setQuantity] = useState(0)
   const [size, setSize] = useState('')
 
+  const { products, fetchProduct, fetching } = useFetchProduct(
+    "https://sw-coding-challenge.herokuapp.com/api/v1/products",
+    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkNvZGVyIn0.B1QyKzKxzpxay1__A8B85ij32rqFoOIAFGDqBmqXhvs"
+  );
+
   const handleIncrement = () => {
     setQuantity(quantity+1)
   }
@@ -41,6 +48,7 @@ export default function App() {
 
   return (
     <Stack spacing={1} width={400}>
+      <LoadingButton variant='contained' color='primary' onClick={fetchProduct}>Change Display</LoadingButton>
       <QuantityCard
         imageUrl="./sample.jpg"
         quantity={quantity}
