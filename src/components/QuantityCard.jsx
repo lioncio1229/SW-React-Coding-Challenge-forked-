@@ -42,8 +42,8 @@ export const NewPrice = ({ originalPrice, salePrice }) => (
 );
 
 const QuantityCard = ({
-  name,
-  description,
+  name='',
+  description='',
   quantity,
   maxQuantity,
   onDecrement,

@@ -1,5 +1,6 @@
 import { Stack, Box, Typography, IconButton } from "@mui/material";
 import { Favorite, FavoriteBorderOutlined } from "@mui/icons-material";
+import {memo} from 'react';
 
 const iconPosition = {
   position: "absolute",
@@ -74,4 +75,4 @@ const RecommendedCard = ({ recommendedProducts, bgcolor = "white"}) => {
   );
 };
 
-export default RecommendedCard;
+export default memo(RecommendedCard);

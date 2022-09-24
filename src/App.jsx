@@ -3,15 +3,16 @@ import QuantityCard from "./components/QuantityCard";
 import SizeSelector from "./components/SizeSelector";
 import { Stack } from "@mui/material";
 import {LoadingButton} from '@mui/lab';
-import { useState } from "react";
+import React, {useEffect, useState } from "react";
 import useFetchProduct from "./useFetchProduct";
-import getRandomizeIndixes from './getRandomizeIndixes';
+import getRandomIndices from './getRandomIndices';
 
 
 export default function App() {
   const [quantity, setQuantity] = useState(0)
   const [size, setSize] = useState('')
   const [index, setIndex] = useState(0);
+  const [recommendedProducts, setRecommendedproducts] = useState([])
 
   const { products } = useFetchProduct(
     "https://sw-coding-challenge.herokuapp.com/api/v1/products",
@@ -21,22 +22,26 @@ export default function App() {
   const handleIncrement = () => {
     setQuantity(quantity+1)
   }
-
+  
   const handleDecrement = () => {
     setQuantity(quantity-1)
   }
-
+  
   const setNewDisplay = () => {
     setIndex(index < products?.d.length ? index + 1 : 0)
   }
 
+  useEffect(() => {
+    if(!products) return
+    const list = products.d;
+    const recommendedList = getRandomIndices(list.length, 2).map(i => list[i])
+    setRecommendedproducts(recommendedList)
+  }, [index, products])
+  
   if(!products) return <div>Loading</div>
 
-  const productList = products.d;
-  const {name, description, imageUrl, salePrice, originalPrice, sizes} = productList[index]
+  const {name, description, imageUrl, salePrice, originalPrice, sizes} =  products.d[index]
 
-  const recommendedProducts = getRandomizeIndixes(productList.length, 2).map(i => productList[i])
-  
   return (
     <Stack spacing={1} width={400}>
 

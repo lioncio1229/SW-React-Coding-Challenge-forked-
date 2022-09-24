@@ -1,6 +1,6 @@
 
 
-const getRandomizeIndixes = (max, outputCount) => {
+const getRandomIndices = (max, outputCount) => {
     const indixes = []
 
     while(indixes.length < outputCount)
@@ -11,4 +11,4 @@ const getRandomizeIndixes = (max, outputCount) => {
     return indixes
 }
  
-export default getRandomizeIndixes;
+export default getRandomIndices;
