@@ -20,7 +20,7 @@ const SizeButtons = ({sizes, selected, setSelected}) => {
     );
 }
 
-const SizeSelector = ({logo, brand, product, oldPrice, newPrice, sizes, selected, setSelected}) => {
+const SizeSelector = ({logo, brand, product, originalPrice, salePrice, sizes, selected, setSelected}) => {
     return (
         <Stack spacing={1.5} bgcolor='white' p={2} borderRadius={2}>
             <Stack direction='row' spacing={2} alignItems='center'>
@@ -28,7 +28,7 @@ const SizeSelector = ({logo, brand, product, oldPrice, newPrice, sizes, selected
                 <Stack fontSize={14} fontWeight="bold"> {brand} </Stack>
             </Stack>
             <Typography variant='h5' fontWeight='bold' noWrap={false}> {product} </Typography>
-            <NewPrice oldPrice={oldPrice} newPrice={newPrice} />
+            <NewPrice originalPrice={originalPrice} salePrice={salePrice} />
             <SizeButtons sizes={sizes} selected={selected} setSelected={setSelected} />
         </Stack>
     );

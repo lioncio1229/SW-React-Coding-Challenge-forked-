@@ -46,7 +46,7 @@ const ProductCard = ({
   </Stack>
 );
 
-const RecommendedCard = ({ recommendedProducts, bgcolor = "white"}) => {
+const RecommendedCard = ({ bgcolor = "white"}) => {
   return (
     <Stack spacing={1} bgcolor={bgcolor} p={2} borderRadius={2}>
       <Stack direction="row" justifyContent="space-between" alignItems="center">

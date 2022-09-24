@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const useFetchProduct = (url, authorizationHeaderToken) => {
   const [fetching, setFetching] = useState(true);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(null);
 
   const fetchProduct = () => setFetching(true);
 
@@ -16,10 +16,10 @@ const useFetchProduct = (url, authorizationHeaderToken) => {
     }
     fetch(url, options)
       .then(res => res.json())
-      .then(json => {
-        setProducts(json);
-        console.log(json);
+      .then(resJson => {
+        setProducts(resJson);
         setFetching(false);
+        console.log('Fetching...');
       });
 
   }, [fetching === true, url, authorizationHeaderToken])

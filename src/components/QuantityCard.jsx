@@ -25,9 +25,9 @@ export const AddRemoveButton = ({ quantity = 0, maxQuantity=100, onDecrement, on
   </Stack>
 );
 
-export const NewPrice = ({ oldPrice, newPrice }) => (
+export const NewPrice = ({ originalPrice, salePrice }) => (
   <Stack direction="rows" gap={3}>
-    <Typography fontWeight="bold">{newPrice}</Typography>
+    <Typography fontWeight="bold">{salePrice}</Typography>
     <Typography
       sx={{
         textDecoration: "line-through",
@@ -36,22 +36,22 @@ export const NewPrice = ({ oldPrice, newPrice }) => (
         fontSize: 14
       }}
     >
-      {oldPrice}
+      {originalPrice}
     </Typography>
   </Stack>
 );
 
 const QuantityCard = ({
-  name = "Mansanas",
-  description = "So this is mansanas from baguio. this is super fresh. mansanas from san pablo",
+  name,
+  description,
   quantity,
   maxQuantity,
   onDecrement,
   onIncrement,
-  oldPrice = "$100",
-  newPrice = "$120",
+  originalPrice = "$100",
+  salePrice = "$120",
   imageSize = 135,
-  imageUrl,
+  imageUrl='#',
 }) => (
   <Stack gap={2} direction="rows" bgcolor="white" p={2} borderRadius={2}>
 
@@ -70,7 +70,7 @@ const QuantityCard = ({
         onDecrement={onDecrement}
         onIncrement={onIncrement}
       />
-      <NewPrice oldPrice={oldPrice} newPrice={newPrice} />
+      <NewPrice originalPrice={originalPrice} salePrice={salePrice} />
     </Stack>
   </Stack>
 );

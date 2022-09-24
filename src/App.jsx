@@ -4,7 +4,7 @@ import SizeSelector from "./components/SizeSelector";
 import { Stack } from "@mui/material";
 import {LoadingButton} from '@mui/lab';
 import { useState } from "react";
-import useFetchProduct from "./hooks/useFetchProduct";
+import useFetchProduct from "./useFetchProduct";
 
 const example = [
   {
@@ -32,8 +32,9 @@ const example = [
 export default function App() {
   const [quantity, setQuantity] = useState(0)
   const [size, setSize] = useState('')
+  const [index, setIndex] = useState(0);
 
-  const { products, fetchProduct, fetching } = useFetchProduct(
+  const { products } = useFetchProduct(
     "https://sw-coding-challenge.herokuapp.com/api/v1/products",
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkNvZGVyIn0.B1QyKzKxzpxay1__A8B85ij32rqFoOIAFGDqBmqXhvs"
   );
@@ -46,25 +47,40 @@ export default function App() {
     setQuantity(quantity-1)
   }
 
+  const setNewDisplay = () => {
+    setIndex(index < products?.d.length ? index + 1 : 0)
+  }
+
+  if(!products) return <div>Loading</div>
+
+  const {name, description, imageUrl, salePrice, originalPrice, sizes} = products.d[index]
+
   return (
     <Stack spacing={1} width={400}>
-      <LoadingButton variant='contained' color='primary' onClick={fetchProduct}>Change Display</LoadingButton>
+
+      <LoadingButton variant='contained' color='primary' onClick={setNewDisplay}>Change Display</LoadingButton>
+
       <QuantityCard
-        imageUrl="./sample.jpg"
+        name={name}
+        description={description}
+        imageUrl={imageUrl}
+        salePrice={salePrice}
+        originalPrice={originalPrice}
         quantity={quantity}
         maxQuantity={10}
         onIncrement={handleIncrement}
         onDecrement={handleDecrement}
       />
+
       <SizeSelector
-        logo={'./sample.jpg'}
-        brand="Mansanas"
-        product="This is mansanas"
-        oldPrice="$120"
-        newPrice="$100"
+        logo={imageUrl}
+        brand={name}
+        product={description}
+        originalPrice={originalPrice}
+        salePrice={salePrice}
         selected={size}
         setSelected={setSize}
-        sizes={example}
+        sizes={sizes}
       />
       <Recommended />
     </Stack>
